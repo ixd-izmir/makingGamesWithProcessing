@@ -7,10 +7,11 @@ Desc: "Hidden Map Duplicate" is a straightforward approach to develop a point an
 In Processing the two images are loaded and only the first visual is shown to the player. The second is analysed by using the GET function to pick a pixel from it corresponding to the mouse position. The colour extracted from the image is than compared to a map and the consequent action is applied using for example a switch-case.
 
 Author: Daniele Savasta for xLab
+Date: 12march2019
 
 */
 PImage scene;                   // scene contain the image visible to the player
-PImage hotspots;                // hotspots contain an image with the interactive hotspots colored with a flat tone lke a mask 
+PImage hotspots;                // hotspots contain an image with the interactive hotspots colored with a flat tone lke a mask
 
 int stage=0;                    // this variable store the index of the stage in which the game is
 
@@ -33,13 +34,13 @@ void draw() {
   println(int(red(colorValue)),int(green(colorValue)),int(blue(colorValue))); // printing on console the found values in r g b
 }
 
-// load the correct stage/scene/hotspot according to the found color 
+// load the correct stage/scene/hotspot according to the found color
 void mouseReleased() {
-  switch(stage) {  
-  case 0: 
+  switch(stage) {
+  case 0:
     if (colorValue==red) { stage=1; scene=loadImage("scene_1.png"); hotspots=loadImage("scene_1_hotspots.png"); }
     if (colorValue==blue){ stage=2; scene=loadImage("scene_2.png"); hotspots=loadImage("scene_2_hotspots.png"); };
-    break; 
+    break;
   case 1:  if (colorValue==green) { stage=0; scene=loadImage("scene_0.png"); hotspots=loadImage("scene_0_hotspots.png"); }
     break;
   case 2: if (colorValue==green) { stage=0; scene=loadImage("scene_0.png"); hotspots=loadImage("scene_0_hotspots.png"); }
